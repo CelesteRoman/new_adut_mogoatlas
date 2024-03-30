@@ -79,8 +79,8 @@ DB_PASSWORD=1234
         MONGODB_DATABASE=app_laravel
         MONGODB_USERNAME=
         MONGODB_PASSWORD=
-*/
-       'mongodb' => [
+
+        'mongodb' => [
             'driver' => 'mongodb',
             'host' => env('MONGODB_HOST', '127.0.0.1'),
             'port' => env('MONGODB_PORT', 27017),
@@ -92,6 +92,36 @@ DB_PASSWORD=1234
                     'database' => env('DB_AUTHENTICATION_DATABASE','admin'),
             ],
         ], 
+*/
+
+/*
+'mongodb' => [
+    'driver' => 'mongodb',
+    'host' => env('MONGO_DB_HOST', 'localhost'),
+    'port' => env('MONGO_DB_PORT', 27017),
+    'database' => env('MONGO_DB_DATABASE'),
+    'username' => env('MONGO_DB_USERNAME'),
+    'password' => env('MONGO_DB_PASSWORD'),
+    'options' => [],
+    'dsn' => env('MONGO_DB_BASE_URI','mongodb://').env('MONGO_DB_HOST', 'localhost')
+],
+*/
+
+       /*'mongodb' => [
+            'driver' => 'mongodb',
+            'host' => env('MONGODB_HOST', '127.0.0.1'),
+            'port' => env('MONGODB_PORT', 27017),
+            'database' => env('MONGODB_DATABASE', 'prueb_adut'),
+            'username' => env('MONGODB_USERNAME'),
+            'password' => env('MONGODB_PASSWORD'),
+            'options' => [],
+            'dsn' => env('MONGODB_BASE_URI','mongodb:mongodb+srv://8122110015:Mons1r0man@cluster0.gyn41zl.mongodb.net/').env('MONGODB_HOST', '127.0.0.1')
+        ], */
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_URI', 'mongodb+srv://8122110015:Mons1r0man@cluster0.gyn41zl.mongodb.net/'),
+            'database' => 'adut'
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',
