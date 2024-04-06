@@ -119,8 +119,8 @@ DB_PASSWORD=1234
         ], */
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('DB_URI', 'mongodb+srv://8122110015:Mons1r0man@cluster0.gyn41zl.mongodb.net/'),
-            'database' => 'adut'
+            'dsn' => env('DB_URI', 'mongodb+srv://Celeste:Celeste@cluster0.jrsydmc.mongodb.net/'),
+            'database' => 'ADUT'
         ],
 
         'pgsql' => [

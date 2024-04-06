@@ -27,7 +27,7 @@
                     <div class="clearfix"></div>                
                   <div class="x_content">
                     <br />
-                    <form name="frmgenero" id="frmgenero2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('usuario.update',['id'=>$user->id]) }}">
+                    <form method="POST" name="form-del{{ $user->id }}" id="form-del{{ $user->id }}"  method="POST" action="{{route('usuario.update',['id'=>$user->id])}}">
                     @csrf 
                     @method('PUT')
                     <!-- -->

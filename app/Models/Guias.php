@@ -3,32 +3,42 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
 
 class Guias extends Model
 {
     use HasFactory;
-    protected  $table = 'tbl_guias';
+    
+    protected $connection = 'mongodb';
+    protected $collection = 'tbl_guias';
+    protected $primarykey = "_id";
 
-    protected $primaryKey = 'id_guia';
-
-   
-    public function tbl_tipo_documento(){
-        return $this->hasOne(TipoDocumento::class, 'id_tipo_documento','id_tipo_documento');
-    }
-    public function tbl_atutores(){
-        return $this->hasOne(Autor::class, 'id_autor','id_autor');
-    }
-    public function tbl_genero(){
-        return $this->hasOne(Genero::class, 'id_genero','id_genero');
-    }
-    public function tbl_editorial(){
-        return $this->hasOne(Editorial::class, 'id_editorial','id_editorial');
-    }
-    public function tbl_materia(){
-        return $this->hasOne(Materia::class, 'id_materia','id_materia');
+    public function autor()
+    {
+        return $this->belongsTo(Autor::class, 'id_autor', '_id');
     }
 
+    public function carrera()
+    {
+        return $this->belongsTo(Carrera::class, 'id_carrera','_id');
+    }
 
+    public function tipoDocumento()
+    {
+        return $this->belongsTo(TipoDocumento::class, 'id_tipo_documento','_id');
+    }
+    public function genero()
+    {
+        return $this->belongsTo(Genero::class, 'id_genero','_id');
+    }
+    public function editorial()
+    {
+        return $this->belongsTo(Editorial::class, 'id_editorial','_id');
+    }
+     public function materia()
+    {
+        return $this->belongsTo(Materia::class, 'id_materia','_id');
+    }
     
 }

@@ -5,78 +5,94 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Memorias;
+use App\Models\TipoDocumento;
+use App\Models\Autor;
+use App\Models\Carrera;
+use App\Models\User;
 use Illuminate\Support\Facades\View;
 use Auth;
 
 class MemoriasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-    
-        $data = Memorias::all();
-
-        return view('memorias.index')->with(compact('data'));
+    $data = Memorias::all();
+     return view('memorias.index')->with(compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $data = Memorias::all();
-        return view('memorias.create')->with(compact('data'));
+        $tipoDocumentos = TipoDocumento::all();
+        $autores = Autor::all();
+        $carreras = Carrera::all();
+        //$id_tutor = User::all();
+        $maestros = User::where('id_rol', 2)->get();
+
+        
+        return view('memorias.create', compact('tipoDocumentos', 'autores', 'carreras','maestros'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+    $memorias = new Memorias();
+    $memorias->Titulo = $request->Titulo;
+    $memorias->id_tipo_documento = $request->id_tipo_documento;
+    $memorias->id_autor = $request->id_autor;
+    $memorias->id_carrera = $request->id_carrera;
+    $memorias->id_tutor = $request->id_tutor;
+    $memorias->empresa = $request->empresa;
+    $memorias->fecha_adquisicion = $request->fecha_adquisicion;
+    $memorias->anno_publicacion = $request->anno_publicacion;
+    $memorias->estatus = $request->estatus;
+
+    $memorias->save();
+    return redirect()->route('memorias.index')->with('success', 'Memoria creada correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $memorias = Memorias::find($id);
+        $tutor = $memorias->tutor;
+    
+        return view('memorias.show', compact('memoria', 'tutor'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        $memorias = Memorias::find($id);
-        return view('memorias.edit')->with(compact('memorias'));
-      /*  $data = user::find($id);
-        return view('memorias.edit')->with(compact('data'));*/
+        $memoria = Memorias::find($id);
+        $autores = Autor::all();
+       
+
+        return view('memorias.edit', compact('memoria', 'autores'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    
     public function update(Request $request, string $id)
     {
-        $user = Memorias::find($id);
-        $memorias->name = $request->name;
-        $memorias->email = $request->email;
+        $memoria = Memorias::find($id);
+        $memoria->Titulo = $request->Titulo;
+        $memoria->id_autor = $request->id_autor;
+        $memoria->empresa = $request->empresa;
+        $memoria->fecha_adquisicion = $request->fecha_adquisicion;
+        $memoria->anno_publicacion = $request->anno_publicacion;
+        $memoria->estatus = $request->estatus;
+
        
-        $memorias->save();
+
+        $memoria->save();
+
         return redirect()->route('memorias.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $memorias = Memorias::find($id)->delete();
-        return redirect()->route('memorias.index');
+        $memorias = Memorias::find($id);
+        if (!$memorias) {
+            return redirect()->route('memorias.index')->with('error', 'Memoria no encontrada');
+        }
+    
+        $memorias->delete();
+        return redirect()->route('memorias.index')->with('success', 'Memoria eliminada correctamente');
     }
+    
 }

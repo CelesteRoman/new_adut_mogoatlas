@@ -54,19 +54,19 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="form-container">
-                <h2 class="text-center mb-4">Editar Libro</h2>
-                <form method="POST" action="{{ route('libros.update',['id'=>$libros->id]) }}" enctype="multipart/form-data">
+                <h2 class="text-center mb-4">Editar Guia</h2>
+                <form method="POST" action="{{ route('guias.update', $guias->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="Titulo">Título del Libro:</label>
-                        <input type="text" name="Titulo" class="form-control" id="Titulo" value="{{ $libros->Titulo }}">
+                        <input type="text" name="Titulo" class="form-control" id="Titulo" value="{{ $guias->Titulo }}">
                     </div>
                     <div class="form-group">
     <label for="id_autor">Autor:</label>
     <select name="id_autor" class="form-control" id="id_autor">
         @foreach($autores as $autor)
-            <option value="{{ $autor->_id }}" {{ $libros->id_autor == $autor->_id ? 'selected' : '' }}>
+            <option value="{{ $autor->_id }}" {{ $guias->id_autor == $autor->_id ? 'selected' : '' }}>
                 {{ $autor->nombre }} {{ $autor->ape_paterno }} {{ $autor->ape_materno }}
             </option>
         @endforeach
@@ -75,7 +75,7 @@
 
                     <div class="form-group">
                         <label for="id_estatus">Estatus:</label>
-                        <input type="text" name="id_estatus" class="form-control" id="id_estatus" value="{{ $libros->id_estatus }}">
+                        <input type="text" name="id_estatus" class="form-control" id="id_estatus" value="{{ $guias->id_estatus }}">
                     </div>
             
                     <button type="submit" class="btn btn-primary btn-block">Guardar Cambios</button>

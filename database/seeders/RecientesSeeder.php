@@ -17,13 +17,12 @@ class RecientesSeeder extends Seeder
     {
         //
 
-DB::table('tbl_recientes')->insert([
-    'id_reciente' => '18', 
-    'id_documento' => '1',
+DB::table('vs_recientes')->insert([
+    
     'fecha' => '2023-11-27',
     'created_at' => DB::raw('now()'),
 ]);
-
+/*
 DB::table('tbl_recientes')->insert([
     'id_reciente' => '19', 
     'id_documento' => '1',
@@ -43,6 +42,6 @@ DB::table('tbl_recientes')->insert([
     'id_documento' => '1',
     'fecha' => '2023-12-05',
     'created_at' => DB::raw('now()'),
-]);
+]); */
     }
 }

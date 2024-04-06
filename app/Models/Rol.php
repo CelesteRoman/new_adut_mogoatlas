@@ -13,8 +13,8 @@ class Rol extends Model
 
     // MongoDB -> Se comento por que voy a usar sql
     protected $connection = "mongodb";
-    protected $collection = "rols"; //este es el nombre de la base de datos en mongo
-    protected $primarykey = "_id"; //el id es el de la coleccion de mongo
+    protected $collection = "tbl_roles"; //este es el nombre de la base de datos en mongo
+    protected $primarykey = "id_rol"; //el id es el de la coleccion de mongo
 
 
 

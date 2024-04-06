@@ -45,9 +45,8 @@
                       <li><a href="#">Favoritos</a></li>
                     </ul>
                   </li> 
-                  <li><a><i class="fa fa-folder"></i>Gestion de Recursos<span class="fa fa-chevron-down"></span></a>
-                     <ul class="nav child_menu">
-                      <!-- <li><a href="{{ route('usuario.index')}}">Listado</a></li>  -->
+                  <li><a><i class="fa fa-folder"></i> Gestion de Recursos<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
                       <li><a href="{{ route('libros.index')}}">Libros</a></li>
                       <li><a href="{{ route('memorias.index')}}">Memorias</a></li>
                       <li><a href="{{ route('articulos.index')}}">Articulos</a></li>
@@ -58,21 +57,28 @@
                   @if(Auth::user()->rol->rol == 'Maestro')
                   <li><a><i class="fa fa-user"></i>Opcion de docente<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Listado</a></li>                      
+                      <li><a href="#">Lista de distribucion</a></li>                      
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-clock-o"></i>Historial<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('recientes.index')}}">Recientes</a></li>
+                      <li><a href="#">Favoritos</a></li>
+                    </ul>
+                  </li> 
                   @endif
                   @if(Auth::user()->rol->rol == 'Alumno')
-                  <li><a><i class="fa fa-user"></i>Opcion de alumno<span class="fa fa-chevron-down"></span></a>
+                 <!-- <li><a><i class="fa fa-user"></i>Opcion de alumno<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="#">Listado</a></li>                      
                     </ul>
-                  </li>
-                  <li><a><i class="fa fa-user"></i>Opciones<span class="fa fa-chevron-down"></span></a>
+                  </li> -->
+                  <li><a><i class="fa fa-clock-o"></i>Historial<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Favoritos</a></li>     
-                      <li><a href="#">Historial</a></li>                      
+                      <li><a href="{{ route('recientes.index')}}">Recientes</a></li>
+                      <li><a href="#">Favoritos</a></li>
                     </ul>
-                  </li>
+                  </li> 
+
                   @endif
                 </ul>

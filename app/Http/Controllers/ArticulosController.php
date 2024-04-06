@@ -5,75 +5,72 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Articulos;
+use App\Models\Autor;
+use App\Models\TipoDocumento;
+use App\Models\Carrera;
+use App\Models\Genero;
+use App\Models\Editorial;
 use Illuminate\Support\Facades\View;
 use Auth;
 
 class ArticulosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-    
-        $data = Articulos::all();
-
-        return view('articulos.index')->with(compact('data'));
+    $data = Articulos::all();
+    return view('articulos.index')->with(compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $data = Articulos::all();
-        return view('articulos.create')->with(compact('data'));
+        $tipoDocumentos = TipoDocumento::all();
+        $autores = Autor::all();
+        $carreras = Carrera::all();
+        $generos = Genero::all();
+        $editorial = Editorial::all();
+        return view('articulos.create')->with(compact('tipoDocumentos', 'autores', 'carreras','generos','editorial'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $articulos = new Articulos();
+        $articulos ->Titulo = $request->Titulo; 
+        $articulos->id_tipo_documento = (int)$request->id_tipo_documento;
+        $articulos->id_autor = (int)$request->id_autor;
+        $articulos->id_carrera = (int)$request->id_carrera;
+        $articulos->fecha_adquisicion = $request->fecha_adquisicion;
+        $articulos->anno_publicacion = $request->anno_publicacion;
+        $articulos->estatus = (int)$request->estatus;
+
+        $articulos->save();
+        return redirect()->route('articulos.index')->with('success', 'Articulo creado correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $articulos = Articulos::find($id);
-        return view('articulos.edit')->with(compact('articulos'));
-      /*  $data = user::find($id);
-        return view('articulos.edit')->with(compact('data'));*/
+        $autores = Autor::all();
+        
+        return view('articulos.edit', compact('articulos', 'autores'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     
     public function update(Request $request, string $id)
     {
-        $user = Articulos::find($id);
-        $articulos->name = $request->name;
-        $articulos->email = $request->email;
+        $articulos = Articulos::find($id);
+        $articulos->Titulo = $request->Titulo;
+        $articulos->id_autor = (int)$request->id_autor;
+        $articulos->estatus = (int)$request->estatus;
        
         $articulos->save();
         return redirect()->route('articulos.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $articulos = Articulos::find($id)->delete();

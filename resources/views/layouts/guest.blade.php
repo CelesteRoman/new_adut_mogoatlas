@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title> Registrarse ADUT </title>
+        <title> Iniciar sesion ADUT </title>
 
         <!-- Fonts {{ config('app.name', 'Registrarse') }} -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -25,7 +25,7 @@
                       class="h-32 w-32 max-w-ful   
                 </a> -->
                
-                <img src="../public/images/logo.jpeg"
+                <img src="images/logo.jpeg"
                 class="w-full sm:max-w-md mt-4 px-4 py-2 sm:pt-0  "
                  alt="No" />
                   </div>

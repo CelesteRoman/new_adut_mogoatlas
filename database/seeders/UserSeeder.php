@@ -17,18 +17,18 @@ class UserSeeder extends Seeder
     public function run(): void
     {
        // Para la materia - 1
-       DB::table('user')->insert([
-        'id' => '6', 
-        'name' => 'Javier',
-        'ape_paterno' => 'Guitierresz',
-        'ape_materno' => 'Lopez',
-        'id_rol'=> '3',
-        'email'=> 'administrador@gmail.com.mx',
+       DB::table('tbl_usuarios')->insert([
+        '_id' => 9, 
+        'name' => 'Alumno1',
+        'ape_paterno' => 'xxxxx',
+        'ape_materno' => 'xxxxx',
+        'id_rol'=> 1,
+        'email'=> 'alumno@utchetumal.edu.mx',
         'password'=> bcrypt('123456789'),
-       ' id_carrera '=> '1',
-        'estatus' =>'1',
-       ' ruta_perfil '=>'perfil4',
-       'created_at' => DB::raw('now()')
+        'id_carrera'=> 1,
+        'estatus' =>1,
+        'ruta_perfil'=>'perfil4',
+        'created_at' => DB::raw('now()')
         
     ]);
     }

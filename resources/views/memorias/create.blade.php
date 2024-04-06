@@ -56,12 +56,20 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="form-container">
-                <h2 class="text-center mb-4">Agregar Nuevo Libro</h2>
-                <form method="POST" action="{{ route('libros.store') }}" enctype="multipart/form-data">
+                <h2 class="text-center mb-4">Agregar Nueva Memoria</h2>
+                <form method="POST" action="{{ route('memorias.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="Titulo">Título del Libro:</label>
-                        <input type="text" name="Titulo" class="form-control" id="Titulo" placeholder="Título del Libro">
+                        <label for="Titulo">Título:</label>
+                        <input type="text" name="Titulo" class="form-control" id="Titulo" placeholder="Título">
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo_documento">Tipo Documento:</label>
+                        <select name="id_tipo_documento" id="id_tipo_documento" class="form-control">
+                            @foreach ($tipoDocumentos as $tipoDocumento)
+                                <option value="{{ $tipoDocumento->id }}">{{ $tipoDocumento->tipo_documento }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="id_autor">Autor:</label>
@@ -72,59 +80,50 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="id_genero">Género:</label>
-                        <select name="id_genero" id="id_genero" class="form-control">
-                            @foreach ($generos as $genero)
-                                <option value="{{ $genero->id }}">{{ $genero->tipo_genero}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="id_editorial">Editorial:</label>
-                        <select name="id_editorial" id="id_editorial" class="form-control">
-                            @foreach ($editorial as $editorial)
-                                <option value="{{ $editorial->id }}">{{ $editorial->nombre_editorial }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="id_carrera">Carrera:</label>
+                        <label for="carrera">Carrera:</label>
                         <select name="id_carrera" id="id_carrera" class="form-control">
                             @foreach ($carreras as $carrera)
                                 <option value="{{ $carrera->id }}">{{ $carrera->carrera }}</option>
                             @endforeach
                         </select>
-                    </div>
+                        <div class="form-group">
+                        <div class="form-group">
+    <label for="tutor">Tutor:</label>
+    <select name="tutor" id="tutor" class="form-control">
+        @foreach ($maestros as $maestro)
+            <option value="{{ $maestro->id }}">{{ $maestro->name }} {{ $maestro->ape_paterno }} {{ $maestro->ape_materno }}</option>
+        @endforeach
+    </select>
+</div>
+
+
+
+
                     <div class="form-group">
-                        <label for="anno_publicacion">Año de Publicación:</label>
-                        <input type="text" name="anno_publicacion" class="form-control" id="anno_publicacion" placeholder="Año de Publicación">
-                    </div>
-                    <div class="form-group">
-                        <label for="id_tipo_documento">Tipo de Documento:</label>
-                        <select name="id_tipo_documento" id="id_tipo_documento" class="form-control">
-                            @foreach ($tipoDocumento as $tipoDocumento)
-                                <option value="{{ $tipoDocumento->id }}">{{ $tipoDocumento->tipo_documento }}</option>
-                            @endforeach
-                        </select>
+                        <label for="empresa">Empresa:</label>
+                        <input type="text" name="empresa" class="form-control" id="empresa" placeholder="Empresa">
                     </div>
                     <div class="form-group">
                         <label for="fecha_adquisicion">Fecha de Adquisición:</label>
                         <input type="text" name="fecha_adquisicion" class="form-control" id="fecha_adquisicion" placeholder="Fecha de Adquisición">
                     </div>
                     <div class="form-group">
+                        <label for="anno_publicacion">Año de Publicación:</label>
+                        <input type="text" name="anno_publicacion" class="form-control" id="anno_publicacion" placeholder="Año de Publicación">
+                    </div>
+                    <div class="form-group">
                         <label for="estatus">Estatus:</label>
                         <input type="text" name="estatus" class="form-control" id="estatus" placeholder="Estatus">
                     </div>
-
                     <div class="form-group">
-                        <label for="ruta_ubicacion">Imagen del Libro:</label>
-                        <input type="file" name="ruta_ubicacion" class="form-control-file" id="ruta_ubicacion">
+                        <label for="imagen_memoria">Imagen de la Memoria:</label>
+                        <input type="file" name="imagen_memoria" class="form-control-file" id="imagen_memoria">
                     </div>
                     <div class="form-group">
-                        <label for="ruta_portada">Archivo del Libro:</label>
-                        <input type="file" name="ruta_portada" class="form-control-file" id="ruta_portada">
+                        <label for="archivo_memoria">Archivo de la Memoria:</label>
+                        <input type="file" name="archivo_memoria" class="form-control-file" id="archivo_memoria">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Agregar Libro</button>
+                    <button type="submit" class="btn btn-primary btn-block">Agregar Memoria</button>
                 </form>
             </div>
         </div>

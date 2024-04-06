@@ -43,7 +43,6 @@
                           <th>No.</th>
                           <th>Nombre</th>
                           <th>Correo electrónico</th>
-                          <th>Género</th>
                           <th>Carrera</th>
                           <th>Rol</th>
                           <th>Fecha creación</th>
@@ -69,8 +68,7 @@
                             @endif
                           </td>
                           <td>{{ $user->email }}</td>
-                          <td>{{ $user->gender->descripcion }}</td>
-                          <td>{{ $user->carrera->carrera}}</td>
+                          <td>{{ $user->id_carrera}}</td>
                           <td>{{ $user->rol->rol}}</td>
                           <td>{{ $user->created_at }}</td>
                           <td>{{ $user->updated_at }}</td>

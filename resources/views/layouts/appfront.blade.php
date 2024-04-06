@@ -7,9 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>YA DATE DE BAJA WEY</title>
-
-    <!-- Bootstrap -->
+    <title>Dashboard ADUT</title>
+    <!-- Bootstrap / arriba css -->
     <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -90,9 +89,13 @@
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="{{asset('/images/amarillo_img.jpeg')}}" alt="..." class="img-circle profile_img">
+              <!-- Sección de la foto de perfil grande del usuario -->
+            
+              <div  class="profile_pic">
+                  <img class="img-circle profile_img" src="{{ asset('images/foto_perfil/' . Auth::user()->ruta_perfil . '.png') }}" alt="User-Profile-Image" height="10%" width="5%">
               </div>
+           
+              <!-- Fin de la foto de perfil grande del usuario src="images/1/libro_dobot.jpeg" -->
               <div class="profile_info">
                 <span>Bienvenido,</span>                
                 <h2>{{ Auth::user()->name }}</h2>                
@@ -124,12 +127,13 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('images/amarillo_img.jpeg')}}" alt="">
-                    {{ Auth::user()->name }}
-                    <span class=" fa fa-angle-down"></span>
+                  <img class="img-circle profile_img" 
+                    src="{{ asset('images/foto_perfil/' . Auth::user()->ruta_perfil . '.png') }}" 
+                    alt="User-Profile-Image" 
+                    style="height: 35px; width: 35px; object-fit: cover; border-radius: 50%;">
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Perfil</a></li>
+                    <li><a href="{{ route('perfil.index')}}"> Perfil</a></li>
                     <li><a href="{{ route('logout') }}" 
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">                                                          

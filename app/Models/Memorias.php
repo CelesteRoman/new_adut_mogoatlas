@@ -3,29 +3,35 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\Model;
+use App\Models\Usuario;
 
 class Memorias extends Model
 {
     use HasFactory;
-    protected  $table = 'tbl_memorias';
+    protected $connection = 'mongodb';
+    protected $collection = 'tbl_memorias';
+    protected $primarykey = "_id";
 
-    protected $primaryKey = 'id_memoria';
-
-    public function tbl_tipo_documento(){
-        return $this->hasOne(TipoDocumento::class, 'id_tipo_documento','id_tipo_documento');
+    public function autor()
+    {
+        return $this->belongsTo(Autor::class, 'id_autor', '_id');
     }
 
-    public function atutores(){
-        return $this->hasOne(Autor::class, 'id_autor','id_autor');
+    public function carrera()
+    {
+        return $this->belongsTo(Carrera::class, 'id_carrera','_id');
     }
 
-    public function carreras(){
-        return $this->hasOne(Carrera::class, 'id_carrera','id_carrera');
+    public function tipoDocumento()
+    {
+        return $this->belongsTo(TipoDocumento::class, 'id_tipo_documento','_id');
     }
 
-    public function tbl_usuarios(){
-        return $this->hasOne(Usuario::class, 'id_tutor','id_tutor');
+    public function tutor()
+    {
+        return $this->belongsTo(Usuario::class, 'id_tutor', '_id')->where('id_rol', 2);
     }
 
 }

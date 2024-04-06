@@ -56,7 +56,7 @@
                         <td>
                         <img src="{{ asset('images/administrador.jpg') }}"alt="No">
                         </td>
-                        <td>{{ $recientes->titulo }}</td>
+                        <td>{{ $recientes->Titulo }}</td>
                         <td>{{ $recientes->fecha }}</td>
                         <td> <a href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                             &nbsp;

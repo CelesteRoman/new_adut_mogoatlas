@@ -31,8 +31,8 @@
                   <div class="x_title">
                     <h2>Lista de libros</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                    <!--<button class="btn btn-primary" type="button">Nuevo</button>-->
-                    <a href="#" class="btn btn-primary">Nuevo</a>
+                    
+                    <a href="{{Route('libros.create')}}" class="btn btn-primary">Nuevo</a>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -42,8 +42,7 @@
                         <tr>
                           <th>No.</th>
                           <th>Titulo</th>
-                          <th>Fecha Adquisicion</th>
-                          <th>Año de publicacion</th>
+                          <th>Autor</th>
                           <th>estatus</th>
                           <th>Acciones</th>
                         </tr>
@@ -56,11 +55,23 @@
                         @foreach($data as $libros)
                         <tr>
                           <td>{{ $cont }}</td>
-                          <td>{{ $libros->titulo }}</td>
-                          <td>{{ $libros->fecha_adquisicion }}</td>
-                          <td>{{ $libros->anno_publicacion }}</td>
+                          <td>{{ $libros-> Titulo }}</td>
+                          <td>
+                @if ($libros->autor)
+                {{ $libros->autor->nombre }} {{ $libros->autor->ape_paterno }} {{ $libros->autor->ape_materno }}
+                @else
+        
+                        @endif
+</td>
                           <td>{{ $libros->estatus }}</td>
-                          
+                          <td> <a href="{{ route('libros.edit',['id'=>$libros->id]) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                          <form action="{{ route('libros.destroy', ['libros' => $libros->id]) }}" method="POST" style="display: inline;">
+                          @csrf
+                          @method('DELETE')
+                             <button type="submit" class="delete" title="Delete" data-toggle="tooltip">
+                            <i class="glyphicon glyphicon-trash"></i>
+</button>
+</form>
 
                                            
                         </tr>

@@ -75,9 +75,13 @@
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="{{asset('/images/img.jpg')}}" alt="..." class="img-circle profile_img">
+             <!-- Sección de la foto de perfil grande del usuario -->
+            
+             <div  class="profile_pic">
+                  <img class="img-circle profile_img" src="{{ asset('images/foto_perfil/' . Auth::user()->ruta_perfil . '.png') }}" alt="User-Profile-Image" height="10%" width="5%">
               </div>
+           
+              <!-- Fin de la foto de perfil grande del usuario src="images/1/libro_dobot.jpeg" -->
               <div class="profile_info">
                 <span>Bienvenido,</span>
                 

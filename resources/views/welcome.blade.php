@@ -13,30 +13,35 @@
 </head>
 <body class="antialiased bg-success p-2 text-dark bg-opacity-25 ">
     <div class="container ">
-        <div class="row justify-content-end pt-3">
+    <div class="row">
+            <div class="col-md-6 mx-auto mt-5">
+                <div class="text-center">
+                    <p> <h1> ¡Bienvenido a ADUT!</h1></p> 
+                    <img src="images/logo.jpeg" class="img-fluid" alt="Logo">
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-around my-4">
+        
             @if (Route::has('login'))
-                <div class="col-sm-4 text-right">
+                <div class="col-sm-4 text-center">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="btn btn-primary">Dashboard</a>
                         <a href="#" class="btn btn-primary">Primary</a>
                     @else
                         <a href="{{ route('login') }}" class="btn btn-primary">Iniciar sesión</a>
 
-                        @if (Route::has('register'))
+                       <!--
+                     @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="btn btn-primary">Registrate</a>
                         @endif
+                    -->
                     @endauth
                 </div>
             @endif
         </div>
 
-        <div class="row">
-            <div class="col-md-6 mx-auto mt-5">
-                <div class="text-center">
-                    <img src="../public/images/logo.jpeg" class="img-fluid" alt="Logo">
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <!-- Bootstrap JS (Optional) -->

@@ -56,12 +56,20 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="form-container">
-                <h2 class="text-center mb-4">Agregar Nuevo Libro</h2>
-                <form method="POST" action="{{ route('libros.store') }}" enctype="multipart/form-data">
+                <h2 class="text-center mb-4">Agregar Nuevo Articulo</h2>
+                <form method="POST" action="{{ route('articulos.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="Titulo">Título del Libro:</label>
-                        <input type="text" name="Titulo" class="form-control" id="Titulo" placeholder="Título del Libro">
+                        <label for="Titulo">Título del Articulo:</label>
+                        <input type="text" name="Titulo" class="form-control" id="Titulo" placeholder="Título del Articulo">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_tipo_documento">Tipo de Documento:</label>
+                        <select name="id_tipo_documento" id="id_tipo_documento" class="form-control">
+                            @foreach ($tipoDocumentos as $tipoDocumento)
+                                <option value="{{ $tipoDocumento->id }}">{{ $tipoDocumento->tipo_documento }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="id_autor">Autor:</label>
@@ -98,14 +106,6 @@
                     <div class="form-group">
                         <label for="anno_publicacion">Año de Publicación:</label>
                         <input type="text" name="anno_publicacion" class="form-control" id="anno_publicacion" placeholder="Año de Publicación">
-                    </div>
-                    <div class="form-group">
-                        <label for="id_tipo_documento">Tipo de Documento:</label>
-                        <select name="id_tipo_documento" id="id_tipo_documento" class="form-control">
-                            @foreach ($tipoDocumento as $tipoDocumento)
-                                <option value="{{ $tipoDocumento->id }}">{{ $tipoDocumento->tipo_documento }}</option>
-                            @endforeach
-                        </select>
                     </div>
                     <div class="form-group">
                         <label for="fecha_adquisicion">Fecha de Adquisición:</label>

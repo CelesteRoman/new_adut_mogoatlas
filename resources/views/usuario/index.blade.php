@@ -58,7 +58,7 @@
                         @endphp
                         @foreach($data as $user)
                         <tr>
-                          <td>{{ $cont }}</td>
+                          <td>{{$user->id  }}</td>
                           <td>{{ $user->name }} 
                           @if ($user->ape_paterno) 
                            {{ $user->ape_paterno }} 
@@ -69,11 +69,11 @@
                           </td>
                           <td>{{ $user->email }}</td>
                           
-                        <!--  <td>{{ $user->carrera}}</td> -->
+                          <td>{{ $user->id_carrera}}</td>
                           <td>{{ $user->rol->rol}}</td>
                           <td>{{ $user->created_at }}</td>
                           <td>{{ $user->updated_at }}</td>
-                          <td> <a href="{{ route('usuario.edit',['id'=>$user->id]) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                          <td> <a href="{{ route('usuario.edit',['id'=>$user->id]) }}" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                             &nbsp;
                             <form method="POST" name="form-del{{ $user->id }}" id="form-del{{ $user->id }}" action="{{ route('usuario.destroy',['id'=>$user->id]) }}" style="display: inline;">
                                 @csrf
