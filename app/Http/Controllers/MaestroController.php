@@ -16,7 +16,7 @@ class MaestroController extends Controller
     {
      // $users = DB::table('users')->get();
      // dd($users);
-     $data = User::all();
+     $data = User::with('rol', 'carrera')->get();
      /* foreach($data as $item){
               dd($item->gender->descripcion);
       }*/
@@ -32,7 +32,8 @@ class MaestroController extends Controller
      */
     public function create()
     {
-        //
+        $data = user::all(); 
+        return view('maestro/create')->with(compact('data'));
     }
 
     /**
@@ -40,7 +41,22 @@ class MaestroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request['name'];
+        $user->ape_paterno = $request['ape_paterno'];
+        $user->ape_materno = $request['ape_materno'];
+        $user->email = $request['email'];
+        $user->password = $request['password']; // Hash password
+        
+        $user->id_rol = (int) $request['id_rol'];
+        $user->id_carrera = (int) $request['id_carrera'];
+        $user->abr_carrera = (string) $request['abr_carrera'];
+        $user->ruta_perfil = (string) $request['ruta_perfil'];
+
+
+        $user->save();
+
+        return redirect()->route('maestro.index')->with('success', 'Alumno Creado Exitosamente!');
     }
 
     /**
@@ -70,7 +86,12 @@ class MaestroController extends Controller
     {
         $user = User::find($id);
         $user->name = $request->name;
+        $user->ape_paterno = $request->ape_paterno;
+        $user->ape_materno = $request->ape_materno;
         $user->email = $request->email;
+        $user->password = $request->password; // Hash password
+        $user->id_rol = $request->id_rol;
+        $user->id_carrera = $request->id_carrera;
        
         $user->save();
         return redirect()->route('maestro.index');

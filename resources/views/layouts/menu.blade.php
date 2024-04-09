@@ -6,31 +6,7 @@
                     </ul>
                   </li>
                   @if(Auth::user()->rol->rol == 'Administrador')
-                 <!--  <li><a><i class="fa fa-user"></i>Género<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ route('gender.index')}}">Listado</a></li>                      
-                      <li><a href="{{ route('gender.create')}}">Nuevo</a></li>
-                    </ul>
-                  </li> -->
-                    <!-- Bloquea a el rol prof o alumno y  le muestra otra cosa a Admin-->
-                      <!-- <li><a><i class="fa fa-user"></i>Carreras<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ route('carrera.index')}}">Listado</a></li>                      
-                      
-                    </ul>
-                  </li> -->
-                   <!-- Bloquea a el rol prof o alumno y le muestra otra cosa a Admin-->
-                   <!-- <li><a><i class="fa fa-user"></i>Roles<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ route('rol.index')}}">Listado</a></li>                      
-                    </ul>
-                  </li> -->
-                   <!-- Bloquea a el rol prof o alumno y le muestra otra cosa a Admin-->
-                   <!-- <li><a><i class="fa fa-user"></i>General<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{ route('general.index')}}">Listado</a></li>                      
-                    </ul>
-                  </li> -->
+            
                   <li><a><i class="fa fa-users"></i>Administrar Usuario<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ route('usuario.index')}}">Listado</a></li>
@@ -42,7 +18,8 @@
                   <li><a><i class="fa fa-clock-o"></i>Historial<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ route('recientes.index')}}">Recientes</a></li>
-                      <li><a href="#">Favoritos</a></li>
+                      <li><a href="{{ route('favoritos.index')}}">Favoritos</a></li>
+                      
                     </ul>
                   </li> 
                   <li><a><i class="fa fa-folder"></i> Gestion de Recursos<span class="fa fa-chevron-down"></span></a>
@@ -57,26 +34,23 @@
                   @if(Auth::user()->rol->rol == 'Maestro')
                   <li><a><i class="fa fa-user"></i>Opcion de docente<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Lista de distribucion</a></li>                      
+                      <li><a href="{{ route('listaDistribucion.index')}}">Lista de distribucion</a></li>                      
                     </ul>
                   </li>
                   <li><a><i class="fa fa-clock-o"></i>Historial<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ route('recientes.index')}}">Recientes</a></li>
-                      <li><a href="#">Favoritos</a></li>
+                      <li><a href="{{ route('favoritos.index')}}">Favoritos</a></li>
+                     
                     </ul>
                   </li> 
                   @endif
                   @if(Auth::user()->rol->rol == 'Alumno')
-                 <!-- <li><a><i class="fa fa-user"></i>Opcion de alumno<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="#">Listado</a></li>                      
-                    </ul>
-                  </li> -->
                   <li><a><i class="fa fa-clock-o"></i>Historial<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ route('recientes.index')}}">Recientes</a></li>
-                      <li><a href="#">Favoritos</a></li>
+                      <li><a href="{{ route('favoritos.index')}}">Favoritos</a></li>
+                      
                     </ul>
                   </li> 
 

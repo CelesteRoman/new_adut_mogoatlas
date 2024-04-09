@@ -29,10 +29,10 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Lista de administradores</h2>
+                    <h2>Lista de Administradores</h2>
                     <ul class="nav navbar-right panel_toolbox">
                     <!--<button class="btn btn-primary" type="button">Nuevo</button>-->
-                    <a href="#" class="btn btn-primary">Nuevo</a>
+                    <a href="{{url('administrador/create')}}" class="btn btn-primary">Nuevo</a>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -43,7 +43,6 @@
                           <th>No.</th>
                           <th>Nombre</th>
                           <th>Correo electrónico</th>
-                          <th>Carrera</th>
                           <th>Rol</th>
                           <th>Fecha creación</th>
                           <th>Fecha actualización</th>
@@ -68,7 +67,6 @@
                             @endif
                           </td>
                           <td>{{ $user->email }}</td>
-                          <td>{{ $user->id_carrera}}</td>
                           <td>{{ $user->rol->rol}}</td>
                           <td>{{ $user->created_at }}</td>
                           <td>{{ $user->updated_at }}</td>

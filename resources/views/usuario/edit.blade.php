@@ -1,95 +1,95 @@
 @extends('layouts.appfront')
 
-@section('content')
-            <div class="page-title">
-              <div class="title_left">
-                <h2>Tipo de usuario</h2>              
-              </div>
-<!--
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
--->                
-            </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Actualizar información</h2>
-                    <div class="clearfix"></div>                
-                  <div class="x_content">
-                    <br />
-                    <form method="POST" name="form-del{{ $user->id }}" id="form-del{{ $user->id }}"  method="POST" action="{{route('usuario.update',['id'=>$user->id])}}">
-                    @csrf 
-                    @method('PUT')
-                    <!-- -->
-                    <!--otro-->
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion2">Id usuario<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="descripcion" id="descripcion2" required="required" class="form-control col-md-7 col-xs-12" placeholder="idusuario" value="{{$user->id}}">
-                        </div>
-                      </div>
-                       <!--otro-->
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name2">Nombre <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="name" id="name2" required="required" class="form-control col-md-7 col-xs-12" placeholder="Másculino" value="{{ $user->name}}">
-                        </div>
-                      </div>
-                        <!--otro-->
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email2">Email<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="email" id="email2" required="required" class="form-control col-md-7 col-xs-12" placeholder="Másculino" value="{{ $user->email}}">
-                        </div>
-                      </div>
-                       <!--otro-->
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion2">Genero <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="descripcion" id="descripcion2" required="required" class="form-control col-md-7 col-xs-12" placeholder="Másculino" value="{{ $user->gender->descripcion}}">
-                        </div>
-                      </div>
-                       <!--otro-->
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="abreviatura2">Carrera<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="abreviatura" id="abreviatura2" required="required" class="form-control col-md-7 col-xs-12" placeholder="M" value="{{ $user->carrera->carrera}}">
-                        </div>
-                      </div>
-                       <!--otro-->
-                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="abreviatura2">Rol<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="abreviatura" id="abreviatura2" required="required" class="form-control col-md-7 col-xs-12" placeholder="M" value="{{ $user->rol->rol}}">
-                        </div>
-                      </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
-                          <button type="submit" class="btn btn-success">Guardar cambios</button>
-                          <button class="btn btn-primary" type="button">Nuevo</button>
-                        </div>
-                      </div>
+@section('sidebar')
+    @include('layouts.menu')
+    @parent
+@endsection
 
+@section('content')
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h2>Editar Usuario</h2>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                  <div class="container">
+                    <h1>Editar Usuario</h1>
+            
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+            
+                    <form action="{{ route('usuario.update', $user->id) }}" method="post">
+                        @csrf
+                        @method('PUT')
+            
+                        <div class="form-group">
+                            <label for="name">Nombre:</label>
+                            <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $user->name) }}" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="ape_paterno">Apellido Paterno:</label>
+                            <input type="text" id="ape_paterno" name="ape_paterno" class="form-control" value="{{ old('ape_paterno', $user->ape_paterno) }}" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="ape_materno">Apellido Materno:</label>
+                            <input type="text" id="ape_materno" name="ape_materno" class="form-control" value="{{ old('ape_materno', $user->ape_materno) }}" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico:</label>
+                            <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="password">Contraseña (Opcional):</label>
+                            <input type="password" id="password" name="password" class="form-control">
+                            <small class="text-muted">Deje este campo vacío si no desea cambiar la contraseña.</small>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="id_rol">Rol:</label>
+                            <select id="id_rol" name="id_rol" class="form-control" required>
+                                <option value="">Seleccione un rol</option>
+                                <option value="1" {{ $user->id_rol == 1 ? 'selected' : '' }}>Alumno</option>
+                                <option value="2" {{ $user->id_rol == 2 ? 'selected' : '' }}>Maestro</option>
+                                <option value="3" {{ $user->id_rol == 3 ? 'selected' : '' }}>Administrador</option>
+                            </select>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="id_carrera">Carrera:</label>
+                            <select id="id_carrera" name="id_carrera" class="form-control" required>
+                                <option value="1" {{ $user->id_carrera == 1 ? 'selected' : '' }}>TECNICO SUPERIOR USNIVERSITARIO DE TECNOLÓGIAS DE LA COMUNICACIÓN</option>
+                                <option value="2" {{ $user->id_carrera == 2 ? 'selected' : '' }}>GASTRONOMIA</option>
+                                <option value="3" {{ $user->id_carrera == 3 ? 'selected' : '' }}>DESARROLLO E INOVACIÓN DE NEGOCIOS</option>
+                                <option value="4" {{ $user->id_carrera == 4 ? 'selected' : '' }}>MECATRONICA</option>
+                            </select>
+                        </div>
+            
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     </form>
-                  </div>
                 </div>
-              </div>
+                        <a href="{{ url('usuario/list') }}" class="btn btn-default">Cancelar</a>
+                    </form>
+                </div>
             </div>
+        </div>
+    </div>
+</div>
 @endsection

@@ -10,7 +10,19 @@
         .card:hover .card-footer {
             display: block;
         }
+
+        /* Agrega un margen entre las cards */
+        .card {
+            margin-bottom: 20px;
+        }
+
+        /* Ajusta el tamaño de las imágenes */
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
+     <link rel="stylesheet" href="styles.css">
 
     @include('layouts.menu')
     @parent
@@ -18,73 +30,59 @@
 
 @section('content')
     <div class="page-title">
-        <!--Fin-->
-        <div id="datatable_filter" class="dataTables_filter">
-            <label>Buscar
-                <input class="form-control input-sm" type="search" placeholder="" aria-controls="datatable">
-            </label>
-        </div>
-        <!--Fin-->
         <div class="title_left">
-            <!--<h3>Dashboard</h3>-->
+            <h3>Seleccion de libros</h3>
         </div>
     </div>
     <div class="clearfix"></div>
-    <div class="row top_tiles">
-        @if(Auth::user()->rol->rol == 'Administrador')
-            <h3>Dashboard Administrador</h3>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                <br>
-                <!-- Inicio -->
-                <div class="card">
-                    <div class="card-body">
-                        <a href="archivos/1/Dobot-Blockly-Workbook.pdf" type="application/pdf" target="_blank">
-                            <img src="images/1/libro_dobot.jpeg" class="img-fluid" id="pdfImage" width="60%" height="60%"  alt="No" />
-                        </a>
-                    </div>
-                    <!-- Descripción del PDF -->
-                    <div class="card-footer text-center">
-                        <h1> Descripción del PDF </h1>
-                    </div>
-                </div>
-                <!-- Fin -->
-            </div>
-        @endif
+    <div id="pdf-container">
 
-        @if(Auth::user()->rol->rol == 'Alumno')
-            <h3> Dashboard Alumno</h3>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                <br>
-                <!-- Inicio -->
-                <div class="card">
-                    <div class="card-body">
-                        <a href="archivos/1/Dobot-Blockly-Workbook.pdf" type="application/pdf" target="_blank">
-                            <img src="images/1/libro_dobot.jpeg" class="img-fluid" id="pdfImage" width="60%" height="60%"  alt="No" />
-                        </a>
-                    </div>
-                    <!-- Descripción del PDF -->
-                    <div class="card-footer text-center">
-                        <h1> Descripción del PDF </h1>
-                    </div>
-                </div>
-                <!-- Fin -->
-            </div>
-        @endif
+    <!--  <div class="container">
+       
+        <img src="imagen2.jpg" id="imagen2" class="imagen" data-pdf="pdf2.pdf">
+       Agrega más imágenes según sea necesario
+    </div> -->
 
-        @if(Auth::user()->rol->rol == 'Maestro')
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                <h3>Dashboard Docente</h3>
-                <br>
-            </div>
-            <!--  inicio -->
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                <div class="count">
-                    <pre> <a href="archivos/1/Dobot-Blockly-Workbook.pdf" type="application/pdf" id="pdfLink" width="100%" height="600px">
-                        <img src="images/1/libro_dobot.jpeg" id="pdfImage" width="60%" height="500px" alt="No" />
-                    </a> </pre>
+   
+
+        <div class="row top_tiles align-items-center">
+            @if(Auth::user()->rol->rol == 'Administrador' || Auth::user()->rol->rol == 'Maestro'|| Auth::user()->rol->rol == 'Alumno')
+                <!-- Inicio de la primera fila de cards <img id="imagen1" src="ruta_a_tu_imagen.jpg" alt="Imagen 1" "> -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{{ route('leer.index') }}"  type="application/pdf"  target="_blank" >
+                                <img   id="1" src="images/1/libro_dobot.jpeg" alt="Imagen 1"  alt="No" />
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <!--Fin-->
-            </div>
-        @endif
-    </div>
+
+                <!-- Inicio de la primera fila de cards -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{{ route('leerMemoria.index') }}" type="application/pdf" target="_blank">
+                                <img id="2"  src="images/1/Educacion_en_gastronomia_su_vinculo_con_la_identidad_cultural_y_el_turismo.png" class="img-fluid" id="pdfImage3" alt="No" />
+                               
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{{ route('leerGuia.index') }}" type="application/pdf" target="_blank">
+                                <img id="3" src="images/1/portada_new.png" class="img-fluid" id="pdfImage3" alt="No" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agrega más cards aquí -->
+                
+                             @endif
+                            </div>
+                            </div>
 @endsection

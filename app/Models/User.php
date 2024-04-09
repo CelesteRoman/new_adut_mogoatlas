@@ -20,7 +20,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        
         'name',
         'ape_paterno',
         'ape_materno',
@@ -54,12 +53,12 @@ class User extends Authenticatable
     protected $connection = "mongodb";
     protected $collection = "tbl_usuarios"; //este es el nombre de la base de datos en mongo
     protected $primarykey = "_id"; //el id es el de la coleccion de mongo
-    
-    
-  /*  public function gender(){
+
+/*
+    public function gender(){
         //Primero es el que se una con la relacion y el segundo es el de la base de datos en mongo
         return $this->hasOne(Gender::class, 'genderId','genderId');
-    }*/
+    } */
 
     public function carrera(){
         return $this->hasOne(Carrera::class, 'id_carrera','id_carrera');

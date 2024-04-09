@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GenderController;
-use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\FavoritosController;
+use App\Http\Controllers\ListaDistribucionController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\UsuarioController;
@@ -16,6 +16,11 @@ use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\MaestroController;
 use App\Http\Controllers\RecientesController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\ComentariosController;
+use App\Http\Controllers\ArchivosController;
+use App\Http\Controllers\Archivos2Controller;
+use App\Http\Controllers\Archivos3Controller;
+
 
 
 
@@ -47,10 +52,10 @@ Route::get('/phpmyinfo', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-/*
-Route::get('/perfil', function () {
-    return view('perfil');
-})->middleware(['auth', 'verified'])->name('perfil');*/
+
+/*Route::get('pdf1', function () {
+    return view('pdfViewer');
+})->middleware(['auth', 'verified'])->name('pdf1');*/
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -63,18 +68,35 @@ Route::middleware('auth')->group(function () {
 //use App\Http\Controllers\ProfileController;
 
 //Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('update.profile');
-
+/*
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [ArchivosController::class, 'index'])->name('dashboard');
+}); */
 
 require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
-    Route::get('/gender/list', [GenderController::class, 'index'])->name('gender.index');
-    Route::get('/gender/create', [GenderController::class, 'create'])->name('gender.create');
-    Route::get('/gender/edit/{id}', [GenderController::class, 'edit'])->name('gender.edit');
-    Route::delete('/gender/delete/{id}', [GenderController::class, 'destroy'])->name('gender.destroy');
-    Route::post('/gender/store', [GenderController::class, 'store'])->name('gender.store');
-    Route::put('/gender/update/{id}', [GenderController::class, 'update'])->name('gender.update');
+    Route::get('/favoritos/list', [FavoritosController::class, 'index'])->name('favoritos.index');
+    Route::get('/favoritos/create', [FavoritosController::class, 'create'])->name('favoritos.create');
+    Route::get('/favoritos/edit/{id}', [FavoritosController::class, 'edit'])->name('favoritos.edit');
+    Route::delete('/favoritos/delete/{id}', [FavoritosController::class, 'destroy'])->name('favoritos.destroy');
+    Route::post('/favoritos/store', [FavoritosController::class, 'store'])->name('favoritos.store');
+    Route::put('/favoritos/update/{id}', [FavoritosController::class, 'update'])->name('favoritos.update');
 
+});
+//Leer_libro
+Route::middleware('auth')->group(function () {
+    Route::get('/leer/list', [ArchivosController::class, 'index'])->name('leer.index');
+   
+
+});
+//Leer_memoria
+Route::middleware('auth')->group(function () {
+    Route::get('/leerMemoria/list', [Archivos2Controller::class, 'index'])->name('leerMemoria.index');
+});
+//Leer_guia
+Route::middleware('auth')->group(function () {
+    Route::get('/leerGuia/list', [Archivos3Controller::class, 'index'])->name('leerGuia.index');
 });
 //Perfil
 Route::middleware('auth')->group(function () {
@@ -102,12 +124,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/general/list', [GeneralController::class, 'index'])->name('general.index');
-    Route::get('/general/create', [GeneralController::class, 'create'])->name('general.create');
-    Route::get('/general/edit/{id}', [GeneralController::class, 'edit'])->name('general.edit');
-    Route::delete('/general/delete/{id}', [GeneralController::class, 'destroy'])->name('general.destroy');
-    Route::post('/general/store', [GeneralController::class, 'store'])->name('general.store');
-    //Route::put('/general/update/{id}', [GeneralController::class, 'update'])->name('general.update');
+    Route::get('/listaDistribucion/list', [ListaDistribucionController::class, 'index'])->name('listaDistribucion.index');
+    Route::get('/listaDistribucion/create', [ListaDistribucionController::class, 'create'])->name('listaDistribucion.create');
+    Route::get('/listaDistribucion/edit/{id}', [ListaDistribucionController::class, 'edit'])->name('listaDistribucion.edit');
+    Route::delete('/listaDistribucion/delete/{id}', [ListaDistribucionController::class, 'destroy'])->name('listaDistribucion.destroy');
+    Route::post('/listaDistribucion/store', [ListaDistribucionController::class, 'store'])->name('listaDistribucion.store');
+    //Route::put('/listaDistribucion/update/{id}', [ListaDistribucionController::class, 'update'])->name('listaDistribucion.update');
 });
 
 Route::middleware('auth')->group(function () {
@@ -197,4 +219,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/recientes/delete/{id}', [RecientesController::class, 'destroy'])->name('recientes.destroy');
     Route::post('/recientes/store', [RecientesController::class, 'store'])->name('recientes.store');
     Route::put('/recientes/update/{id}', [RecientesController::class, 'update'])->name('recientes.update');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/comentarios/list', [ComentariosController::class, 'index'])->name('comentarios.index');
+    Route::get('/comentarios/create', [ComentariosController::class, 'create'])->name('comentarios.create');
+    Route::get('/comentarios/edit/{id}', [ComentariosController::class, 'edit'])->name('comentarios.edit');
+    Route::delete('/comentarios/delete/{id}', [ComentariosController::class, 'destroy'])->name('comentarios.destroy');
+    Route::post('/comentarios/store', [ComentariosController::class, 'store'])->name('comentarios.store');
+    Route::put('/comentarios/update/{id}', [ComentariosController::class, 'update'])->name('comentarios.update');
 });

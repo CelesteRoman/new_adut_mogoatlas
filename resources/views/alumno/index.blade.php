@@ -9,7 +9,7 @@
 <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h2>Tipo de usuario</h2>
+                <h2>Tipo de Usuario</h2>
               </div>
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -29,10 +29,10 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Lista de alumnos</h2>
+                    <h2>Lista de Alumnos</h2>
                     <ul class="nav navbar-right panel_toolbox">
                     <!--<button class="btn btn-primary" type="button">Nuevo</button>-->
-                    <a href="#" class="btn btn-primary">Nuevo</a>
+                    <a href="{{url('alumno/create')}}" class="btn btn-primary">Nuevo</a>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -43,7 +43,6 @@
                           <th>No.</th>
                           <th>Nombre</th>
                           <th>Correo electrónico</th>
-                          <th>Género</th>
                           <th>Carrera</th>
                           <th>Rol</th>
                           <th>Fecha creación</th>
@@ -69,8 +68,10 @@
                             @endif
                           </td>
                           <td>{{ $user->email }}</td>
-                          <td>{{ $user->gender->descripcion }}</td>
-                          <td>{{ $user->carrera->carrera}}</td>
+                          <td>@if ($user->abr_carrera)                            
+                            {{ $user->abr_carrera}} 
+                             @endif 
+                           </td>
                           <td>{{ $user->rol->rol}}</td>
                           <td>{{ $user->created_at }}</td>
                           <td>{{ $user->updated_at }}</td>

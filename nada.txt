@@ -1,0 +1,43 @@
+ <!-- Es de menu.blade.php talvez sirva <li><a><i class="fa fa-user"></i>Género<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('gender.index')}}">Listado</a></li>                      
+                      <li><a href="{{ route('gender.create')}}">Nuevo</a></li>
+                    </ul>
+                  </li> -->
+
+                  <!-- 
+                   @if(Auth::user()->rol->rol == 'Administrador')
+        <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+               <!--INICIO --> 
+               <!-- div class="tile-stats">
+                </div>  -->
+                <!--FIN-->
+                <div class="count">
+               <pre> <a href="archivos/1/Dobot-Blockly-Workbook.pdf" type="application/pdf"  id="pdfLink" width="100%" height="600px">
+                <img src="images/1/libro_dobot.jpeg" id="pdfImage"  width="60%" height="500px" alt="No" />
+                </a> </pre>
+                </div> 
+        <!--  inicio -->
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                <div class="count">
+                    <pre> <a href="archivos/1/Dobot-Blockly-Workbook.pdf" type="application/pdf" id="pdfLink" width="100%" height="600px">
+                        <img src="images/1/libro_dobot.jpeg" id="pdfImage" width="60%" height="500px" alt="No" />
+                    </a> </pre>
+                </div>
+                <!--Fin-->
+            <h3>Dashboard Administrador</h3>
+            </div>
+            <!--  inicio  archivos/1/Dobot-Blockly-Workbook.pdf -->
+            <div class="">
+                <div class="count">
+                    <pre> <a href="{{ route('leer.index') }}" type="application/pdf" id="pdfLink" width="100%" height="600px">
+                        <img src="images/1/libro_dobot.jpg" id="pdfImage" width="60%" height="500p" alt="No" />
+                    </a> </pre>
+                </div>
+                <!--Fin-->
+<li><a href="{{ route('comentarios.index')}}">Comentarios</a></li>
+               
+               
+            </div>
+        @endif
+                  -->

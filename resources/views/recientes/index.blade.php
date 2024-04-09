@@ -8,34 +8,15 @@
 @section('content')
 <div class="">
             <div class="page-title">
-              <div class="title_left">
-                <h2>RECIENTES</h2>
+              <div class="text-center">
+                <h2>Lista Recientes</h2>
               </div>
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <!--<div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                  <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>-->
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Lista de libros recien leidos</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                    <!--<button class="btn btn-primary" type="button">Nuevo</button>-->
-                    <a href="#" class="btn btn-primary">Nuevo</a>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
+                 
+
                   <div class="x_content">
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
@@ -51,29 +32,25 @@
                         @php
                           $cont = 1;
                         @endphp
-                        @foreach($data as $recientes)
+                        @foreach($data as $favoritos)
                         <tr>
                         <td>
-                        <img src="{{ asset('images/administrador.jpg') }}"alt="No">
+                        <img src="{{ asset('images/1/libro_dobot.jpg') }}"  class="img-fluid" alt="No">
                         </td>
-                        <td>{{ $recientes->Titulo }}</td>
-                        <td>{{ $recientes->fecha }}</td>
-                        <td> <a href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-                            &nbsp;
-                            <form method="POST" name="#" id="#" action="#" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <a href="#" onclick="document.getElementById('#').submit();"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                            </form>
-                          </td>   
-                          
-                          
-
-                                           
+                        <td> {{ 'Dobot-Blockly-Workbook' }} </td>
+                        <td> {{ '2023-11-27 05:02:15' }} </td>
+                        <td> <a href="{{Route('leer.index')}}" class="btn btn-primary">Leer</a> </td>         
                         </tr>
-                         @php
-                           $cont++;
-                         @endphp
+                        <tr>
+                        <td>
+                        <img src="{{ asset('images/1/Educacion_en_gastronomia_su_vinculo_con_la_identidad_cultural_y_el_turismo.png') }}" style="width:41%; height:35%;" class="img-fluid" alt="No">
+                        </td>
+                        <td> {{ 'Memoria de estadía profesional elaborada Jesús Alberto Gomez' }} </td>
+                        <td> {{ '2023-11-27 05:02:15' }} </td>
+                        <td> <a href="{{Route('leerMemoria.index')}}" class="btn btn-primary">Leer</a> </td>
+                                   
+                        </tr>
+                       
                         @endforeach
                       </tbody>
                     </table>

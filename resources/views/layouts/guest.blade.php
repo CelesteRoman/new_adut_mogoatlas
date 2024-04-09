@@ -12,7 +12,14 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+          <!-- Styles -->
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+        <!-- Scripts @vite(['resources/css/app.css', 'resources/js/app.js']) -->
+        
     </head>
     <body class="font-sans text-gray-900 antialiased">
    <!-- min-h-screen flex flex-col sm:justify-center items-center pt-4 sm:pt-0 bg-gray-50 dark:bg-gray-100-->

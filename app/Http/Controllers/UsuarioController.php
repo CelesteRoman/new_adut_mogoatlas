@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Rol;
+use App\Models\Carrera;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
-use Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 class UsuarioController extends Controller
 {
     /**
@@ -16,7 +20,7 @@ class UsuarioController extends Controller
     {
      // $users = DB::table('users')->get();
      // dd($users);
-     $data = User::all();
+     $data = User::with('rol', 'carrera')->get();
      /* foreach($data as $item){
               dd($item->gender->descripcion);
       }*/
@@ -32,7 +36,8 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        $data = user::all();
+        return view('usuario/create')->with(compact('data'));
     }
 
     /**
@@ -40,7 +45,24 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $user = new User;
+        $user->name = $request['name'];
+        $user->ape_paterno = $request['ape_paterno'];
+        $user->ape_materno = $request['ape_materno'];
+        $user->email = $request['email'];
+        $user->password = $request['password']; // Hash password
+        
+        $user->id_rol = (int) $request['id_rol'];
+        $user->id_carrera = (int) $request['id_carrera'];
+        $user->abr_carrera = (string) $request['abr_carrera'];
+        $user->ruta_perfil = (string) $request['ruta_perfil'];
+        $user->estatus = (int) $request['estatus'];
+
+        $user->save();
+
+
+        return redirect()->route('usuario.index')->with('success', 'Usuario Creado Exitosamente!');
     }
 
     /**
@@ -54,11 +76,12 @@ class UsuarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
-{
-    $user = User::find($id);
-    return view('usuario.edit')->with(compact('user'));
-}
+    public function edit(string $id)
+    {
+        $user = User::find($id);
+        return view('usuario.edit')->with(compact('user'));
+        }
+
       /*  $data = User::find($id);
         return view('usuario.edit')->with(compact('data'));*/
     
@@ -67,16 +90,22 @@ class UsuarioController extends Controller
      * Update the specified resource in storage.
      */
     
-     public function update(Request $request, $id)
+     public function update(Request $request, string $id)
      {
-         $user = User::find($id);
-         $user->name = $request->name;
-         $user->email = $request->email;
-         $user->save();
-         return redirect()->route('usuario.index');
-     }
-     
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->ape_paterno = $request->ape_paterno;
+        $user->ape_materno = $request->ape_materno;
+        $user->email = $request->email;
+        $user->password = $request->password; // Hash password
+        $user->id_rol = $request->id_rol;
+        $user->id_carrera = $request->id_carrera;
+    
+       
+        $user->save();
 
+        return redirect()->route('usuario.index')->with('success', 'Usuario Actualizado Exitosamente!');
+    }
     /**
      * Remove the specified resource from storage.
      */

@@ -9,7 +9,7 @@
 <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h2>Tipo de libro</h2>
+                
               </div>
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -57,11 +57,11 @@
                           <td>{{ $cont }}</td>
                           <td>{{ $libros-> Titulo }}</td>
                           <td>
-                @if ($libros->autor)
-                {{ $libros->autor->nombre }} {{ $libros->autor->ape_paterno }} {{ $libros->autor->ape_materno }}
-                @else
+    @if ($libros->autor)
+        {{ $libros->autor->nombre }} {{ $libros->autor->ape_paterno }} {{ $libros->autor->ape_materno }}
+    @else
         
-                        @endif
+    @endif
 </td>
                           <td>{{ $libros->estatus }}</td>
                           <td> <a href="{{ route('libros.edit',['id'=>$libros->id]) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
