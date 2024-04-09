@@ -40,5 +40,9 @@ class Libros extends Model
     {
         return $this->belongsTo(TipoDocumento::class, 'id_tipo_documento','_id');
     }
+    public function libros()
+    {
+        return $this->belongsTo(Libros::class, 'id_libro','_id');
+    }
 
 }

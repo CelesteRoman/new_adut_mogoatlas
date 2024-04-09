@@ -55,7 +55,13 @@
         
     @endif
     </td>
-                                        <td>{{ $guias->estatus }}</td>
+    <td>
+                          @if($guias->estatus == 1)
+                              Activo
+                              @else
+                                  Inactivo
+                              @endif
+                          </td>
                                         <td>
                                             <a href="{{ route('guias.edit', ['id' => $guias->id]) }}">
                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

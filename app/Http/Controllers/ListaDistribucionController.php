@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Models\Comentarios;
 use App\Models\User;
+use App\Models\Libros;
+use App\Models\Memorias;
+use App\Models\Articulos;
+use App\Models\Guias;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\ListasDistribucion;
+use App\Models\TipoDocumento;
 class ListaDistribucionController extends Controller
 {
     public function index()
@@ -29,9 +34,14 @@ class ListaDistribucionController extends Controller
     public function create()
     {
         //$data = Guias::all();
-        $data = ListasDistribucion::all();
+        //$data = ListasDistribucion::all();
+        $libros = Libros::all();
+        $memoria = Memorias::all();
+        $articulo = Articulos::all();
+        $guias = Guias::all();
+        $tipoDocumentos = TipoDocumento::all();
        
-        return view('comentarios.create')->with(compact('data'));
+        return view('listaDistribucion.create')->with(compact('tipoDocumentos','libros','memoria','articulo','guias'));
     }
 
     public function store(Request $request)

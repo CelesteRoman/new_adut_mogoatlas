@@ -62,9 +62,13 @@
                         <textarea name="comentario" class="form-control" id="comentario" rows="5"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="id_documento">ID del Documento:</label>
-                        <input type="text" name="id_documento" class="form-control" id="id_documento" placeholder="ID del Documento">
-                    </div>
+                                <label for="id_tipo_documento">Tipo de Documento:</label>
+                                <select name="id_tipo_documento" id="id_tipo_documento" class="form-control">
+                                    @foreach ($tipoDocumentos as $tipoDocumento)
+                                        <option value="{{ $tipoDocumento->id }}">{{ $tipoDocumento->tipo_documento }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                     <button type="submit" class="btn btn-primary btn-block">Agregar Comentario</button>
                     <button href="{{ route('comentarios.index') }}" class="btn btn-primary btn-block">Regresar</button>
                  

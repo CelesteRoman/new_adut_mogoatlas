@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comentarios;
 use App\Models\User;
+use App\Models\TipoDocumento;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
@@ -29,9 +30,10 @@ class ComentariosController extends Controller
     public function create()
     {
         //$data = Guias::all();
-        $data = Comentarios::all();
+        //$data = Comentarios::all();
+        $tipoDocumentos = TipoDocumento::all();
        
-        return view('comentarios.create')->with(compact('data'));
+        return view('comentarios.create')->with(compact('tipoDocumentos'));
     }
 
     public function store(Request $request)

@@ -20,6 +20,8 @@
                   <div class="x_title">
                     <h2>Lista de distribucion</h2>
                     <ul class="nav navbar-right panel_toolbox">
+                    <a href="{{ Route('listaDistribucion.create') }}" class="btn btn-primary">Nuevo</a>
+
                    <a href="{{ route('dashboard') }}" class="btn btn-primary">Regresar</a>
                    
                     </ul>
@@ -46,13 +48,13 @@
                         <tr>
                           
                           <td>{{ $listaDistribucion->nombre_lista}}</td>
-                          <td>{{ $listaDistribucion->nombre_lista}}</td>
+                          <td>{{ $listaDistribucion->cantidad_archivos}}</td>
                           <td>{{ $listaDistribucion->created_at }}</td>
                           <td>{{ $listaDistribucion->updated_at }}</td>
                          
-                          <td> <a href="{{ route('comentarios.edit',['id'=>$listaDistribucion->id]) }}" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                          <td> <a href="{{ route('listaDistribucion.edit',['id'=>$listaDistribucion->id]) }}" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                             &nbsp;
-                            <form method="POST" name="form-del{{ $listaDistribucion->id }}" id="form-del{{ $listaDistribucion->id }}" action="{{ route('comentarios.destroy',['id'=>$listaDistribucion->id]) }}" style="display: inline;">
+                            <form method="POST" name="form-del{{ $listaDistribucion->id }}" id="form-del{{ $listaDistribucion->id }}" action="{{ route('listaDistribucion.destroy',['id'=>$listaDistribucion->id]) }}" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <a href="#" onclick="document.getElementById('form-del{{ $listaDistribucion->id }}').submit();"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>

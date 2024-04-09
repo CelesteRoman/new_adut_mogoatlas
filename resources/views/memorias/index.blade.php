@@ -55,7 +55,13 @@
         
     @endif
     </td>
-                                        <td>{{ $memorias->estatus }}</td>
+    <td>
+                          @if($memorias->estatus == 1)
+                              Activo
+                              @else
+                                  Inactivo
+                              @endif
+                          </td>
                                         <td>
                                             <a href="{{ route('memorias.edit', ['id' => $memorias->id]) }}">
                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

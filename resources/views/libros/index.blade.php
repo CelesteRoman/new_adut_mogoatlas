@@ -63,7 +63,13 @@
         
     @endif
 </td>
-                          <td>{{ $libros->estatus }}</td>
+<td>
+                          @if($libros->estatus == 1)
+                              Activo
+                              @else
+                                  Inactivo
+                              @endif
+                          </td>
                           <td> <a href="{{ route('libros.edit',['id'=>$libros->id]) }}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                           <form action="{{ route('libros.destroy', ['libros' => $libros->id]) }}" method="POST" style="display: inline;">
                           @csrf

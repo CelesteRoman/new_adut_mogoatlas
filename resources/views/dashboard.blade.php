@@ -74,7 +74,7 @@
                     <div class="card">
                         <div class="card-body">
                             <a href="{{ route('leerGuia.index') }}" type="application/pdf" target="_blank">
-                                <img id="3" src="images/1/portada_new.png" class="img-fluid" id="pdfImage3" alt="No" />
+                                <img id="3" src="images/3/Guia _de_desarrollo_de_contenido_tematico_Unidad 2_Parcia_ 2_Taller_III_3_2023.jpeg" class="img-fluid" id="pdfImage3" alt="No" />
                             </a>
                         </div>
                     </div>

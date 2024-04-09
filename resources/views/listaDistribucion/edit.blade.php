@@ -5,17 +5,7 @@
               <div class="title_left">
                 <h2>Tipo de usuario</h2>              
               </div>
-<!--
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
--->                
+             
             </div>
             </div>
             <div class="clearfix"></div>
@@ -27,7 +17,7 @@
                     <div class="clearfix"></div>                
                   <div class="x_content">
                     <br />
-                    <form method="POST" name="form-del{{ $user->id }}" id="form-del{{ $user->id }}"  method="POST" action="{{route('usuario.update',['id'=>$user->id])}}">
+                    <form method="POST" name="form-del{{ $listaDistribucion->id }}" id="form-del{{ $listaDistribucion->id }}"  method="POST" action="{{route('listaDistribucion.update',['id'=>$listaDistribucion->id])}}">
                     @csrf 
                     @method('PUT')
                     <!-- -->
@@ -36,7 +26,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion2">Id usuario<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="descripcion" id="descripcion2" required="required" class="form-control col-md-7 col-xs-12" placeholder="idusuario" value="{{$user->id}}">
+                          <input type="text" name="descripcion" id="descripcion2" required="required" class="form-control col-md-7 col-xs-12" placeholder="idusuario" value="{{$listaDistribucion->id}}">
                         </div>
                       </div>
                        <!--otro-->
@@ -44,7 +34,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name2">Nombre <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="name" id="name2" required="required" class="form-control col-md-7 col-xs-12" placeholder="Másculino" value="{{ $user->name}}">
+                          <input type="text" name="name" id="name2" required="required" class="form-control col-md-7 col-xs-12" placeholder="Másculino" value="{{ $listaDistribucion->nombre_lista}}">
                         </div>
                       </div>
                         <!--otro-->
@@ -52,7 +42,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email2">Email<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="email" id="email2" required="required" class="form-control col-md-7 col-xs-12" placeholder="Másculino" value="{{ $user->email}}">
+                          <input type="text" name="email" id="email2" required="required" class="form-control col-md-7 col-xs-12" placeholder="Másculino" value="{{ $listaDistribucion->detalles}}">
                         </div>
                       </div>
                        <!--otro-->
@@ -60,7 +50,15 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion2">Genero <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="descripcion" id="descripcion2" required="required" class="form-control col-md-7 col-xs-12" placeholder="Másculino" value="{{ $user->gender->descripcion}}">
+                          <input type="text" name="descripcion" id="descripcion2" required="required" class="form-control col-md-7 col-xs-12" placeholder="Másculino" value="{{ $listaDistribucion->created_at}}">
+                        </div>
+                      </div>
+                      <!--otro-->
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="abreviatura2">Rol<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" name="abreviatura" id="abreviatura2" required="required" class="form-control col-md-7 col-xs-12" placeholder="M" value="{{ $listaDistribucion->cantidad_archivos}}">
                         </div>
                       </div>
                        <!--otro-->
@@ -68,17 +66,10 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="abreviatura2">Carrera<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="abreviatura" id="abreviatura2" required="required" class="form-control col-md-7 col-xs-12" placeholder="M" value="{{ $user->carrera->carrera}}">
+                          <input type="text" name="abreviatura" id="abreviatura2" required="required" class="form-control col-md-7 col-xs-12" placeholder="M" value="{{ $listaDistribucion->updated_at}}">
                         </div>
                       </div>
-                       <!--otro-->
-                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="abreviatura2">Rol<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="abreviatura" id="abreviatura2" required="required" class="form-control col-md-7 col-xs-12" placeholder="M" value="{{ $user->rol->rol}}">
-                        </div>
-                      </div>
+                       
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
