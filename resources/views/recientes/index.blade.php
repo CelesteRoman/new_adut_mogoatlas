@@ -45,7 +45,7 @@
                         <td>
                         <img src="{{ asset('images/1/Educacion_en_gastronomia_su_vinculo_con_la_identidad_cultural_y_el_turismo.png') }}" style="width:41%; height:35%;" class="img-fluid" alt="No">
                         </td>
-                        <td> {{ 'Memoria de estadía profesional elaborada Jesús Alberto Gomez' }} </td>
+                        <td> {{ 'Educacion en gastronomia su vinculo con la identidad cultural y el turismo' }} </td>
                         <td> {{ '2023-11-27 05:02:15' }} </td>
                         <td> <a href="{{Route('leerMemoria.index')}}" class="btn btn-primary">Leer</a> </td>
                                    
